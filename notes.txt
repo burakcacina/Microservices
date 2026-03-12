@@ -1,0 +1,57 @@
+docker compose -p services up --build
+
+psql -U postgres -p 5433 -h localhost
+
+\dt list table
+
+\l list db
+
+\c connect to db
+
+sudo lsof -nP -iTCP:5432 -sTCP:LISTEN
+sudo lsof -i:5432
+
+sudo kill -9 828
+
+sudo rm /tmp/.s.PGSQL.5432
+sudo lsof | grep "/tmp/.s.PGSQL.5432"
+
+RabbitMQ exchanges route messages to queues: `direct` exchanges use an exact routing key match, `fanout` exchanges broadcast to all bound queues, `topic` exchanges route based on pattern matching of routing keys, and `headers` exchanges route by matching message headers.
+5672 amqp, 15672 management ui
+
+
+The "D" in SOLID stands for the Dependency Inversion Principle (DIP).
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+The CAP theorem (Consistency, Availability, Partition tolerance) states that a distributed data store can only guarantee two out of three properties simultaneously:
+
+
+Consistency: All nodes see the same data at the same time.
+Availability: Every request receives a (non-error) response, without guarantee that it contains the most recent write.
+Partition tolerance: The system continues to operate despite arbitrary message loss or failure of part of the system.
+
+
+ docker run --name postgres_db \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=1234 \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql/data \
+  -d \
+  postgres:16-alpine
+
+
+docker run --name rabbitmq_server \
+  -e RABBITMQ_DEFAULT_USER=guest \
+  -e RABBITMQ_DEFAULT_PASS=guest \
+  -p 5672:5672 \
+  -p 15672:15672 \
+  -d \
+  rabbitmq:3-management
+
+docker run --name seq_server \
+  -e ACCEPT_EULA="Y" \
+  -e SEQ_FIRSTRUN_ADMINPASSWORD="uowe!^a210.!" \
+  -p 5341:80 \
+  --restart unless-stopped \
+  -d \
+  datalust/seq:latest

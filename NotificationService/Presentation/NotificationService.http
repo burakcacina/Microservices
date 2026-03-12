@@ -1,0 +1,24 @@
+@NotificationService_HostAddress = http://localhost:5051
+
+### Health
+GET {{NotificationService_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+### List notifications
+GET {{NotificationService_HostAddress}}/api/notifications
+Accept: application/json
+
+###
+
+### OpenAPI document
+GET {{NotificationService_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+### Scalar API reference
+GET {{NotificationService_HostAddress}}/scalar/v1
+
+###

@@ -1,0 +1,35 @@
+@OrderService_HostAddress = http://localhost:5050
+
+### Health
+GET {{OrderService_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+### Create order
+POST {{OrderService_HostAddress}}/api/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+	"productId": 1,
+	"quantity": 2,
+	"user": {
+		"name": "Test User",
+		"email": "test@example.com",
+		"phoneNumber": "+15555550100"
+	}
+}
+
+###
+
+### OpenAPI document
+GET {{OrderService_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+### Scalar API reference
+GET {{OrderService_HostAddress}}/scalar/v1
+
+###

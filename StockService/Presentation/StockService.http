@@ -1,0 +1,31 @@
+@StockService_HostAddress = http://localhost:5052
+
+### Health
+GET {{StockService_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+### List products
+GET {{StockService_HostAddress}}/api/products
+Accept: application/json
+
+###
+
+### Get product by id
+@ProductId = 1
+GET {{StockService_HostAddress}}/api/products/{{ProductId}}
+Accept: application/json
+
+###
+
+### OpenAPI document
+GET {{StockService_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+### Scalar API reference
+GET {{StockService_HostAddress}}/scalar/v1
+
+###
